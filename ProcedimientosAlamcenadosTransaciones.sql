@@ -27,6 +27,12 @@ AS BEGIN
           SELECT "El prodcto ya a sido creado y se le a incrementado un 0.5% al valor real" AS mensaje;       
         END
       ELSE IF ( @tipo = bien )
+          IF ( @id = NULL )
+            BEGINT
+              @ultimo_registro SELECT MAX(id) FROM producto;
+              @id =  @ultimo_registro + 1;
+            END
+          END
           @valor_iva =  @valor_neto * 0.2;
           INSERT INTO producto  (id, nombre, valor_neto, tipo)
                  VALUES (@id, @nombre, @valor_neto, @tipo);

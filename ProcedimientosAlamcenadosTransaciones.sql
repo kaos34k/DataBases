@@ -10,13 +10,13 @@ AS BEGIN
   BEGIN TRANSACTION guardar
     BEGIN TRY
       IF EXISTS ( SELECT * FROM producto WHERE id = @id ) -- pregunto si el id ya existe y retorno un mensaje con una alerta.
-        BEGINT
+        BEGIN
           SELECT "El prodcto ya existe por favor igresa uno diferente" AS mensaje;
         END
       ELSE IF ( @tipo = servicio )
-        BEGINT
+        BEGIN
           IF ( @id = NULL )
-            BEGINT
+            BEGIN
               @ultimo_registro SELECT MAX(id) FROM producto;
               @id =  @ultimo_registro + 1;
             END
@@ -28,7 +28,7 @@ AS BEGIN
         END
       ELSE IF ( @tipo = bien )
           IF ( @id = NULL )
-            BEGINT
+            BEGIN
               @ultimo_registro SELECT MAX(id) FROM producto;
               @id =  @ultimo_registro + 1;
             END
@@ -39,12 +39,12 @@ AS BEGIN
           SELECT "El prodcto ya a sido creado y se le a incrementado un 0.5% al valor real" AS mensaje;    
       END
       IF(@@ERROR > 0)
-        BEGINT
+        BEGIN
           ROLLBACK guardar
           SELECT "Existe un error por favor vielve a intentarlo de nuevo" AS mensaje;
         END
       ELSE
-        BEGINT
+        BEGIN
           COMMIT guardar
         END
       END

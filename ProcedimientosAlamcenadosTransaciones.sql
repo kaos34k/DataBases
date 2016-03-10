@@ -38,7 +38,7 @@ AS BEGIN
                  VALUES (@id, @nombre, @valor_neto, @tipo);
           SELECT "El prodcto ya a sido creado y se le a incrementado un 0.5% al valor real" AS mensaje;    
       END
-      IF(@@ERROR)
+      IF(@@ERROR > 0)
         BEGINT
           ROLLBACK guardar
           SELECT "Existe un error por favor vielve a intentarlo de nuevo" AS mensaje;

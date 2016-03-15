@@ -1,6 +1,6 @@
 CREATE DATABASE modelo_v1
 GO
-USE DATABASE  modelo_v1
+USE  modelo_v1
 GO
 
 CREATE TABLE categoria (

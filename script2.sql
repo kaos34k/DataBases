@@ -1,7 +1,8 @@
-CREATE DATABASES modelo_v1
+CREATE DATABASE modelo_v1
 GO
-USE DATABASES  modelo_v1
+USE DATABASE  modelo_v1
 GO
+
 CREATE TABLE categoria (
 	idcategoria int primary key,
 ) 
@@ -20,7 +21,7 @@ GO
 CREATE TABLE empleado (
 	idempleado int primary key,
 	idpersona int,
-	foreign key (idpersona) references persona(idpersona)
+	foreign key (idpersona) references persona(idpersona),
 	foreign key(idempleado) references empleado(idempleado),
 ) 
 GO
@@ -39,7 +40,7 @@ CREATE TABLE relacion_rara_que_encontre_por_hay(
 	idrelacion_rara_que_encontre_por_hay int,
 	idproducto int,
 	idc int, -- este id no se ni de donde salio eso esta en el modelo y si no escriben las variables completas pues ovbio no se va a entender.
-	ADD CONSTRAINT clave_primaria_compuesta PRIMARY KEY (idproducto,idc),
+	PRIMARY KEY(idproducto,idc),
 	valor_total varchar(60),
 	cantidad varchar(60),
 )

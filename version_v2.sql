@@ -73,13 +73,12 @@ CREATE TABLE factura (
 GO
 CREATE TABLE remision(
 	id_compra int ,
-	id_producto int, 
+	id_producto int,
+	primary key (id_compra, id_producto ), 
 	detalle varchar(120),
 	valor_compra float,
 	total_compra float,
-	constraint id_compra foreign key (id_compra)
-	references compra(id_compra),
-	constraint id_producto foreign key (id_producto)
-	references producto(id_producto),
+	foreign key (id_compra) references compra(id_compra),
+	foreign key (id_producto) references producto(id_producto),
 )
 GO

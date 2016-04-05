@@ -56,3 +56,10 @@ SET @var2 = @var * 0.15
 SELECT   set @var2 AS titulo
 print @var2
 
+
+-- Transaciones
+BEGIN TRANSATION t1 
+  update empreado set nombre = 'mariana'
+  where NorEmpleado = 4 
+ROLLBACK transactiont1
+COMMIT TRANSATION t1

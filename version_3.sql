@@ -9,7 +9,9 @@ CREATE TABLE categoria(
 GO
 CREATE TABLE producto(
 	id_producto int primary key, 
+	id_catgoria int,
 	nombre varchar(60),
+	foreign key(id_catgoria) references categoria(id_catgoria)
 )
 GO
 CREATE TABLE persona(

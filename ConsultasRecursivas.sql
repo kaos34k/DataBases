@@ -61,5 +61,29 @@ print @var2
 BEGIN TRANSATION t1 
   update empreado set nombre = 'mariana'
   where NorEmpleado = 4 
-ROLLBACK transactiont1
+ROLLBACK t1
 COMMIT TRANSATION t1
+
+CREATE PROCEDURE usp_insertar 
+  @NorEmpleado int,
+  @nombre varchar(60),
+  @apellido varchar(60),
+  @cargo varchar(60),
+  @NroJefe int
+  AS 
+  BEGIN
+    BEGIN TRANSATION t1
+      INSER INTO empleado VALUES (@NorEmpleado,@nombre, @apellido, @cargo, @NroJefe)
+      IF @@error >0
+        BEGIN
+          ROLLBACK  TRANSACTION t1
+          return 
+        END
+      ELSE  
+        BEGIN
+          COMMIT TRANSATION t1 
+          return
+        END
+  END
+
+

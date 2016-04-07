@@ -5,7 +5,8 @@ USE evaluacion;
 GO 
 CREATE TABLE modelo ( 
     id_modelo int primary key, 
-    nombre_modelo varchar(60) 
+    nombre_modelo varchar(60),
+    capacidad int
 )
 GO 
 CREATE TABLE avion( 

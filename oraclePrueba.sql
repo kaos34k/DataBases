@@ -26,5 +26,5 @@ create table Venta (
   codigocaje int,
   codigomaquina int,
   fechaVenta date
-  foing key (codigopro) references Productos (Codigopro)
+  foreign key (codigopro) references Productos (Codigopro)
 )

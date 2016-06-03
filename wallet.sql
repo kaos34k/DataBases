@@ -53,3 +53,23 @@ create table estadoCuenta(
   foreign key (usuarios_idusuarios) references usuario(idusuarios),
   foreign key (tipoMovimiento_idtipoMovimiento) references tipoMovimiento(idtipoMovimiento)
 )
+
+
+
+--consultas:
+--estado total de los ingresos
+--estado total de los egresos
+--estado actual de ingresos
+--historico o reporte de ingresos y egresos
+--usuarios con mayores ingresos
+--usuarios con menores ingresos
+--usuarios con permisos de crud
+
+-- procedimientos almacenados
+--login
+--crear usuarios
+--editar usuario
+--crear estados de cuenta
+--crear tipo de cuenta
+--bloquear usuarios a partir de cierto numero de uso
+--estado total de los ingresos

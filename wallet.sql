@@ -34,8 +34,8 @@ create table usuario(
   nombre varchar(45),
   correo varchar(45),
   pwd varchar(45),
-  foreign key (rolUsuario) references usuario(idrolUsuarios),
-  foreign key (tipoCuenta_idtipoMembresia) references usuario(idtipoMenbresia),
+  foreign key (rolUsuario) references rol(idrolUsuarios),
+  foreign key (tipoCuenta_idtipoMembresia) references tipoMenbresia(idtipoMenbresia),
 )
 go 
 create table tipoMovimiento(
@@ -51,5 +51,5 @@ create table estadoCuenta(
   monto bigint(20),
   fecha date,
   foreign key (usuarios_idusuarios) references usuario(idusuarios),
-  foreign key (tipoMovimiento_idtipoMovimiento) references usuario(idtipoMovimiento)
+  foreign key (tipoMovimiento_idtipoMovimiento) references tipoMovimiento(idtipoMovimiento)
 )

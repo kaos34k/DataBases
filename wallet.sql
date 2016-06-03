@@ -22,13 +22,13 @@ create table rol(
 )
 go
 create table tipoMenbresia (
-  idtipoMenbresia int,
+  idtipoMenbresia int primary key,
   nombreMembresia varchar (45),
   descripcionMenbresia varchar(45)
 )
 go
 create table usuario(
-  idusuarios int,
+  idusuarios int primary key,
   rolUsuario int,
   tipoCuenta_idtipoMembresia int,
   nombre varchar(45),
@@ -39,16 +39,16 @@ create table usuario(
 )
 go 
 create table tipoMovimiento(
-  idtipoMovimiento int,
+  idtipoMovimiento int primary key,
   nombreMovimiento varchar(45),
   perCRUDMovimiento varchar(45)
 )
 go 
 create table estadoCuenta(
-  idestadoCuenta int
+  idestadoCuenta int primary key,
   usuarios_idusuarios int,
   tipoMovimiento_idtipoMovimiento int,
-  monto bigint(20),
+  monto bigint,
   fecha date,
   foreign key (usuarios_idusuarios) references usuario(idusuarios),
   foreign key (tipoMovimiento_idtipoMovimiento) references tipoMovimiento(idtipoMovimiento)

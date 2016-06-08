@@ -1,7 +1,7 @@
 --Crear base de datos
 --Entregar 23 junio
---Modelo relacional
---Procedimientos almacenados inserción
+--Modelo relacional//listo
+--Procedimientos almacenados inserción//listo
 --Plan de backup
 --Permisos de usuario
 --Roles del servidor
@@ -74,10 +74,11 @@ create table estadoCuenta(
 --editar rol//listo
 --crear tipomenbresia//listo
 --editar tipomenbresia//listo
---crear estados de cuenta
---crear tipo de cuenta
---bloquear usuarios a partir de cierto numero de uso
---estado total de los ingresos
+--crear tipo de cuenta//listo
+--editar tipo de cuenta//listo
+--crear estados de cuenta//listo
+--edita estado de cuenta //listo
+
 
 --crear procedimiento para encriptado de usuario
 Create Procedure insertUsuario

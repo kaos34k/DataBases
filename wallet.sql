@@ -92,3 +92,26 @@ Begin
     )
 End
 Go
+
+
+-- crear procedimiento para login de usuario
+Create Procedure LoginUsuario
+    @nombre nvarchar(50), 
+    @pwd nvarchar(50),
+    @Result bit Output
+As
+    Declare @PwdEncode As nvarchar(300)
+    Declare @pwdDecode As nvarchar(50)
+Begin
+    Select @PwdEncode = pwd From usuario Where nombre = @nombre
+    Set @pwdDecode = DECRYPTBYPASSPHRASE('password', @PwdEncode)
+End
+ 
+Begin
+    If @pwdDecode = @Pass
+        Set @Result = 1
+    Else
+        Set @Result = 0
+End
+Go
+

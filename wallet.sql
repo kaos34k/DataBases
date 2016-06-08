@@ -243,3 +243,47 @@ Begin
   where idtipoMovimiento = @idtipoMovimiento
 end
 Go
+
+
+--Crear estado de cuenta
+create proceure insertEstadoCuenta
+  @idestadoCuenta int primary key,
+  @usuarios_idusuarios int,
+  @tipoMovimiento_idtipoMovimiento int,
+  @monto bigint,
+  @fecha date,
+as
+begin
+  insert into estadoCuenta (
+    idestadoCuenta,
+    usuarios_idusuarios,
+    tipoMovimiento_idtipoMovimiento,
+    monto,
+    fecha,
+  ) 
+  values (
+    @idestadoCuenta,
+    @usuarios_idusuarios,
+    @tipoMovimiento_idtipoMovimiento,
+    @monto,
+    @fecha,
+  )
+end
+Go
+
+--Editar estado cuenta
+create proceure updateEstadoCuenta
+  @idestadoCuenta int primary key,
+  @usuarios_idusuarios int,
+  @tipoMovimiento_idtipoMovimiento int,
+  @monto bigint,
+  @fecha date,
+as
+begin
+  UPDATE estadoCuenta
+  SET usuarios_idusuarios = @usuarios_idusuarios, tipoMovimiento_idtipoMovimiento = @tipoMovimiento_idtipoMovimiento,
+  monto = @monto, fecha = @fecha
+  WHERE idestadoCuenta = @idestadoCuenta
+end
+Go
+

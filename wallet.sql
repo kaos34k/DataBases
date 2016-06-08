@@ -101,7 +101,7 @@ Go
 
 
 -- crear procedimiento para login de usuario
-Create Procedure LoginUsuario
+Create Procedure LoginUsuario 
     @nombre nvarchar(50), 
     @pwd nvarchar(50),
     @Result bit Output
@@ -109,7 +109,8 @@ As
     Declare @PwdEncode As nvarchar(300)
     Declare @pwdDecode As nvarchar(50)
 Begin
-    Select @PwdEncode = pwd From usuario Where nombre = @nombre
+    Select @PwdEncode = pwd From usuario Where nombre = @nombre 
+    and rol != 0
     Set @pwdDecode = DECRYPTBYPASSPHRASE('password', @PwdEncode)
 End
  
@@ -120,7 +121,7 @@ Begin
         Set @Result = 0
 End
 Go
-
+--Editar usuario
 create Procedure updateUsuario 
   @idusuarios int
   @rolUsuario int,
@@ -133,5 +134,16 @@ Begin
   UPDATE usuario
   SET rolUsuario = @rolUsuario, tipoCuenta_idtipoMembresia = @tipoCuenta_idtipoMembresia,
      nombre = @nombre, correo = @correo, pwd = @pwd
+  WHERE idusuarios = @idusuarios;
+end
+
+--eliminar usuario modo logico
+-- 0 en la tabla rol debe ser inactivo y en programacion se debe validar que el usuario que tenga como rol = 0  no permitira acceso 
+create Procedure deleteUsuario 
+  @idusuarios int
+AS
+Begin
+  UPDATE usuario
+  SET rolUsuario = 0 
   WHERE idusuarios = @idusuarios;
 end

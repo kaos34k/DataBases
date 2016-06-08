@@ -73,3 +73,22 @@ create table estadoCuenta(
 --crear tipo de cuenta
 --bloquear usuarios a partir de cierto numero de uso
 --estado total de los ingresos
+
+
+
+--crear procedimiento para encriptado de usuario
+Create Procedure IngresarUsuario
+  @nombre nvarchar(50), 
+  @pwd nvarchar(50)
+As
+Begin
+    Insert Into usuario (
+        nombre,
+        pwd
+    )
+    Values (
+        @nombre,
+        ENCRYPTBYPASSPHRASE('password', @pwd )
+    )
+End
+Go

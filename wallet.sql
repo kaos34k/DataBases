@@ -66,8 +66,8 @@ create table estadoCuenta(
 --usuarios con permisos de crud
 
 -- procedimientos almacenados
---login
---crear usuarios
+--login//listo
+--crear usuarios//listo
 --editar usuario
 --crear estados de cuenta
 --crear tipo de cuenta
@@ -76,12 +76,12 @@ create table estadoCuenta(
 
 --crear procedimiento para encriptado de usuario
 Create Procedure IngresarUsuario
-  @idusuarios int primary key,
+  @idusuarios int,
   @rolUsuario int,
   @tipoCuenta_idtipoMembresia int,
   @nombre varchar(45),
   @correo varchar(45),
-  @pwd varchar(45),
+  @pwd varchar(45)
 As
 Begin
     Insert Into usuario (
@@ -121,3 +121,17 @@ Begin
 End
 Go
 
+create Procedure updateUsuario 
+  @idusuarios int
+  @rolUsuario int,
+  @tipoCuenta_idtipoMembresia int,
+  @nombre varchar(45),
+  @correo varchar(45),
+  @pwd varchar(45)
+AS
+Begin
+  UPDATE usuario
+  SET rolUsuario = @rolUsuario, tipoCuenta_idtipoMembresia = @tipoCuenta_idtipoMembresia,
+     nombre = @nombre, correo = @correo, pwd = @pwd
+  WHERE idusuarios = @idusuarios;
+end

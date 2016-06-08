@@ -68,14 +68,15 @@ create table estadoCuenta(
 -- procedimientos almacenados
 --login//listo
 --crear usuarios//listo
---editar usuario
+--editar usuario//listo
+--eliminar usuario//listo
 --crear estados de cuenta
 --crear tipo de cuenta
 --bloquear usuarios a partir de cierto numero de uso
 --estado total de los ingresos
 
 --crear procedimiento para encriptado de usuario
-Create Procedure IngresarUsuario
+Create Procedure insertUsuario
   @idusuarios int,
   @rolUsuario int,
   @tipoCuenta_idtipoMembresia int,
@@ -136,7 +137,7 @@ Begin
      nombre = @nombre, correo = @correo, pwd = @pwd
   WHERE idusuarios = @idusuarios;
 end
-
+Go
 --eliminar usuario modo logico
 -- 0 en la tabla rol debe ser inactivo y en programacion se debe validar que el usuario que tenga como rol = 0  no permitira acceso 
 create Procedure deleteUsuario 
@@ -147,3 +148,63 @@ Begin
   SET rolUsuario = 0 
   WHERE idusuarios = @idusuarios;
 end
+Go
+--crear rol 
+create procedure insertRol
+  @idrolUsuarios int, 
+  @rolUsuariocol varchar(45)
+as
+begin
+  insert into rol (
+    idrolUsuarios,
+    rolUsuariocol
+  ) values (
+    @idrolUsuarios,
+    @rolUsuariocol
+  )
+end
+Go
+
+--editar rol
+create procedure updateRol
+  @idrolUsuarios int, 
+  @rolUsuariocol varchar(45)
+as
+begin
+  UPDATE usuario
+  SET rolUsuariocol = @rolUsuariocol
+  WHERE idrolUsuarios = @idrolUsuarios
+end
+Go
+
+--crear menbresias
+create Procedure insertTipoMenbresia
+  @idtipoMenbresia int,
+  @nombreMembresia varchar (45),
+  @descripcionMenbresia varchar(45)
+as
+Begin
+  insert into tipoMenbresia (
+  idtipoMenbresia,
+  nombreMembresia,
+  descripcionMenbresia
+  ) values (
+    @idtipoMenbresia,
+    @nombreMembresia,
+    @descripcionMenbresia
+  )
+end
+Go
+
+--editar menbresia
+create procedure updateTipoMenbresia
+  @idtipoMenbresia int, 
+  @nombreMembresia varchar(45),
+  @descripcionMenbresia varchar(45)
+as
+begin
+  UPDATE TipoMenbresia
+  SET nombreMembresia = @nombreMembresia, descripcionMenbresia = @descripcionMenbresia
+  WHERE idtipoMenbresia = @idtipoMenbresia
+end
+Go

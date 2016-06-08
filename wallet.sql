@@ -70,6 +70,10 @@ create table estadoCuenta(
 --crear usuarios//listo
 --editar usuario//listo
 --eliminar usuario//listo
+--crear rol //listo
+--editar rol//listo
+--crear tipomenbresia//listo
+--editar tipomenbresia//listo
 --crear estados de cuenta
 --crear tipo de cuenta
 --bloquear usuarios a partir de cierto numero de uso
@@ -206,5 +210,36 @@ begin
   UPDATE TipoMenbresia
   SET nombreMembresia = @nombreMembresia, descripcionMenbresia = @descripcionMenbresia
   WHERE idtipoMenbresia = @idtipoMenbresia
+end
+Go
+
+--crear tipo movimiento
+crear Procedure insertTipoMovimiento
+  @idtipoMovimiento int,
+  @nombreMovimiento varchar(45),
+  @perCRUDMovimiento varchar(45)
+as
+begin
+  insert into tipoMovimiento(
+    idtipoMovimiento,
+    nombreMovimiento,
+    perCRUDMovimiento
+  ) values (
+    @idtipoMovimiento,
+    @nombreMovimiento,
+    @perCRUDMovimiento
+  )
+end
+Go
+
+create procedure updateTipoMovimiento
+  @idtipoMovimiento int,
+  @nombreMovimiento varchar(45),
+  @perCRUDMovimiento varchar(45)
+as
+Begin
+  update tipoMovimiento 
+  set nombreMovimiento = @nombreMovimiento, perCRUDMovimiento = @perCRUDMovimiento
+  where idtipoMovimiento = @idtipoMovimiento
 end
 Go

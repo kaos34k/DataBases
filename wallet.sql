@@ -23,7 +23,7 @@ create table rol(
 go
 create table tipoMenbresia (
   idtipoMenbresia int primary key,
-  nombreMembresia varchar (45),
+  nombreMembresia varchar (255),
   descripcionMenbresia varchar(45)
 )
 go
@@ -215,7 +215,7 @@ end
 Go
 
 --crear tipo movimiento
-crear Procedure insertTipoMovimiento
+create Procedure insertTipoMovimiento
   @idtipoMovimiento int,
   @nombreMovimiento varchar(45),
   @perCRUDMovimiento varchar(45)
@@ -247,7 +247,7 @@ Go
 
 
 --Crear estado de cuenta
-create proceure insertEstadoCuenta
+create procedure insertEstadoCuenta
   @idestadoCuenta int primary key,
   @usuarios_idusuarios int,
   @tipoMovimiento_idtipoMovimiento int,
@@ -267,18 +267,18 @@ begin
     @usuarios_idusuarios,
     @tipoMovimiento_idtipoMovimiento,
     @monto,
-    @fecha,
+    @fecha
   )
 end
 Go
 
 --Editar estado cuenta
-create proceure updateEstadoCuenta
+create procedure updateEstadoCuenta
   @idestadoCuenta int primary key,
   @usuarios_idusuarios int,
   @tipoMovimiento_idtipoMovimiento int,
   @monto bigint,
-  @fecha date,
+  @fecha date
 as
 begin
   UPDATE estadoCuenta

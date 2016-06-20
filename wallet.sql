@@ -288,3 +288,23 @@ begin
 end
 Go
 
+--Crear cuentas administrativas o estandar para usuarios administradores o colaboradores
+--Creando un usuario en SQL Azure con permisos restringidos segun rol
+--creacion de rol con prefijos de acceso o vencimiento ce cuentas o contraseña 
+USE wallet 
+GO
+CREATE LOGIN hentadwer WITH PASSWORD=N'Jairoalberto0561'
+GO
+--Crear Usuario Para base de datos estandar 
+CREATE USER hentadwer WITH password='Jairoalberto0561';
+--procedimiento almacenado para loguear administrador de base de datos 
+EXEC sp_addrolemember 'dbmanager', 'hentadwer';
+--procedimiento almacenado para permitir a una cuenta generar mas loguin de susuario 
+EXEC sp_addrolemember 'loginmanager', 'hentadwer';
+--añadir rol administrador publico (por defecto al crear ya esta activo en el sistema).
+EXEC sp_addrolemember 'public', 'hentadwer';
+--consulta comprobacion de inicio de seccion almacenados en la base de datos
+SELECT * FROM sys.sql_logins;
+--consulta niveles de base de datos que puede acceder los usuarios administrativos 
+SELECT * FROM sys.databases;
+

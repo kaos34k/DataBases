@@ -23,8 +23,8 @@ create table rol(
 go
 create table tipoMenbresia (
   idtipoMenbresia int primary key,
-  nombreMembresia varchar (255),
-  descripcionMenbresia varchar(45)
+  nombreMembresia varchar (45),
+  descripcionMenbresia varchar(255)
 )
 go
 create table usuario(
@@ -143,6 +143,7 @@ Begin
   WHERE idusuarios = @idusuarios;
 end
 Go
+
 --eliminar usuario modo logico
 -- 0 en la tabla rol debe ser inactivo y en programacion se debe validar que el usuario que tenga como rol = 0  no permitira acceso 
 create Procedure deleteUsuario 

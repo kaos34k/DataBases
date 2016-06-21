@@ -116,17 +116,18 @@ As
     Declare @pwdDecode As nvarchar(50)
 Begin
     Select @PwdEncode = pwd From usuario Where nombre = @nombre 
-    and rol != 0
+    and rolUsuario != 0
     Set @pwdDecode = DECRYPTBYPASSPHRASE('password', @PwdEncode)
 End
  
 Begin
-    If @pwdDecode = @Pass
+    If @pwdDecode = @pwd
         Set @Result = 1
     Else
         Set @Result = 0
 End
 Go
+
 --Editar usuario
 create Procedure updateUsuario 
   @idusuarios int,

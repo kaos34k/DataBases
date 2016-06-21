@@ -129,7 +129,7 @@ End
 Go
 --Editar usuario
 create Procedure updateUsuario 
-  @idusuarios int
+  @idusuarios int,
   @rolUsuario int,
   @tipoCuenta_idtipoMembresia int,
   @nombre varchar(45),
@@ -178,8 +178,8 @@ create procedure updateRol
 as
 begin
   UPDATE usuario
-  SET rolUsuariocol = @rolUsuariocol
-  WHERE idrolUsuarios = @idrolUsuarios
+  SET rolUsuario = @rolUsuariocol
+  WHERE rolUsuario = @idrolUsuarios
 end
 Go
 
@@ -249,11 +249,11 @@ Go
 
 --Crear estado de cuenta
 create procedure insertEstadoCuenta
-  @idestadoCuenta int primary key,
+  @idestadoCuenta int,
   @usuarios_idusuarios int,
   @tipoMovimiento_idtipoMovimiento int,
   @monto bigint,
-  @fecha date,
+  @fecha date
 as
 begin
   insert into estadoCuenta (
@@ -261,7 +261,7 @@ begin
     usuarios_idusuarios,
     tipoMovimiento_idtipoMovimiento,
     monto,
-    fecha,
+    fecha
   ) 
   values (
     @idestadoCuenta,

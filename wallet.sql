@@ -21,10 +21,10 @@ create table rol(
   rolUsuariocol varchar(45)
 )
 go
-create table tipoMenbresia (
-  idtipoMenbresia int primary key,
+create table tipoMembresia (
+  idtipoMembresia int primary key,
   nombreMembresia varchar (45),
-  descripcionMenbresia varchar(255)
+  descripcionMembresia varchar(255)
 )
 go
 create table usuario(
@@ -35,7 +35,7 @@ create table usuario(
   correo varchar(45),
   pwd varchar(45),
   foreign key (rolUsuario) references rol(idrolUsuarios),
-  foreign key (tipoCuenta_idtipoMembresia) references tipoMenbresia(idtipoMenbresia),
+  foreign key (tipoCuenta_idtipoMembresia) references tipoMembresia(idtipoMembresia),
 )
 go 
 create table tipoMovimiento(

@@ -204,14 +204,14 @@ Go
 
 --editar menbresia
 create procedure updateTipoMenbresia
-  @idtipoMenbresia int, 
+  @idtipoMembresia int, 
   @nombreMembresia varchar(45),
-  @descripcionMenbresia varchar(45)
+  @descripcionMembresia varchar(45)
 as
 begin
-  UPDATE TipoMenbresia
-  SET nombreMembresia = @nombreMembresia, descripcionMenbresia = @descripcionMenbresia
-  WHERE idtipoMenbresia = @idtipoMenbresia
+  UPDATE TipoMembresia
+  SET nombreMembresia = @nombreMembresia, descripcionMembresia = @descripcionMembresia
+  WHERE idtipoMembresia = @idtipoMembresia
 end
 Go
 
